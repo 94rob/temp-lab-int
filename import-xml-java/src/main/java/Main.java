@@ -14,31 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws ParserConfigurationException, IOException, SAXException {
+    public static void main(String[] args) {
         Document doc = instantiateXMLFile("DataGenericFormatted.xml");
         List<Series> series = getSeries(doc);
         System.out.println(series.size());
 
         System.out.println(series.get(1).toString());
-
-
-        /*NodeList seriesNodeList = doc.getElementsByTagName("Series");
-        Element firstSeriesElement = (Element) seriesNodeList.item(0);
-
-        NodeList seriesKey = firstSeriesElement.getElementsByTagName("SeriesKey");
-
-        Element seriesKeyElement = (Element) seriesKey.item(0);
-
-
-
-        NodeList valuesNodeList = seriesKeyElement.getElementsByTagName("Value");
-
-        for(int i=0; i< valuesNodeList.getLength(); i++){
-            Element valueElement = (Element) valuesNodeList.item(i);
-            System.out.println("Attribute: " + valueElement.getAttribute("concept") + " Value: " + valueElement.getAttribute("value"));
-
-        }*/
-
 
     }
 
@@ -56,10 +37,8 @@ public class Main {
             System.out.println("IOException: " + e);
         } catch (SAXException e){
             System.out.println("SAXException: " + e);
-        } finally{
-            System.out.println("XML tradotto in Document correttamente");
-            return doc;
         }
+        return doc;
     }
 
     public static List<Series> getSeries(Document doc){
@@ -135,5 +114,9 @@ public class Main {
 
         }
         return series;
+    }
+
+    public static void insertSerie(Series s){
+
     }
 }
